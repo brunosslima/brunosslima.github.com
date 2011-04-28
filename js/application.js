@@ -13,7 +13,7 @@ $(function() {
     var files = $('<div/>').attr('class', 'files');
 
     $.each(gist.files, function(file_index, file) {
-      files.append($('<a/>').attr('href', 'https://gist.github.com/' + gist.repo + '#' + file).html(file))
+      files.append($('<a/>').attr('href', 'https://gist.github.com/' + gist.repo + '#file_' + file).html(file))
     });
     
     element.append(files);
