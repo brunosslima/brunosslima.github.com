@@ -1,6 +1,6 @@
 body {padding: 0; margin: 0; margin-left: 15%;}
-.top {background-color: #DDD; border-top-left-radius: 15px; padding: 15px 35px; height: 200px; color: #c30;}
-.top span {font-size: 4.5em; font-family: Georgia; font-style: italic; padding: 0;}
-.top p {padding: 0; margin: 0; font-family: Georgia; font-weight: bold; padding-left: .5em;}
-.top hr {height: 8px; background-color: #c30; margin-top: 20px; border-color: transparent;}
+.top {background-color: #DDD; border-top-left-radius: 15px; padding: 15px 0; height: 200px; color: #c30;}
+.top span {font-size: 4.5em; font-family: Georgia; font-style: italic; padding: 0; margin: 0 35px;}
+.top p {padding: 0; margin: 0 35px; font-family: Georgia; font-weight: bold; padding-left: .2em;}
+.top hr {height: 8px; background-color: #c30; margin-top: 20px; border-color: transparent; margin: 20px 0px 0px 35px;}
 .top hr + hr {margin-top: 10px;}
