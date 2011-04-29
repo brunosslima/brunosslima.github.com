@@ -4,3 +4,6 @@ body {padding: 0; margin: 0; margin-left: 15%;}
 .top p {padding: 0; margin: 0 35px; font-family: Georgia; font-weight: bold; padding-left: .2em;}
 .top hr {height: 8px; background-color: #c30; margin-top: 20px; border-color: transparent; margin: 20px 0px 0px 35px;}
 .top hr + hr {margin-top: 10px;}
+.files {padding-top: 7px;}
+.files a:link, .files a:visited, .files a:active { color:#500;}
+.files a {font: normal 1em Georgia; letter-spacing: .3ex; margin-right: 1em; padding: 3px 6px; background-color: #fdc; text-decoration: none;}
