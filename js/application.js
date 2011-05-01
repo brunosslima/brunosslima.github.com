@@ -49,6 +49,26 @@ insert_gist = function(gist) {
   var repo_link = gist.find('a:contains(This Gist)');
   var repo = repo_link.attr('href').replace("https://gist.github.com/", "");
   var file_link = gist.find('a[href^="https://gist.github.com/'+repo+'#"]');
-  var file_name = file_link.attr('href').replace('https://gist.github.com/'+repo+'#file_', "");  
-  $("li[data-repo="+repo+"] .files div[data-filename='"+file_name+"']").append(gist);
+  var file_name = file_link.attr('href').replace('https://gist.github.com/'+repo+'#file_', "");
+  
+  if(file_name.match(/\.md$/)) {
+    var lines = gist.find(".line");
+    var gist_text_string = "";
+    $.each(lines, function(index, line){
+      gist_text_string += line.innerText + "\n";
+    });
+  
+    var converter = new Showdown.converter();
+    marked_down = converter.makeHtml(gist_text_string);
+  
+    var marked_div = $('<div/>');
+    marked_div.attr('class', 'converted-markdown');
+    marked_div.append(marked_down);
+
+    $("li[data-repo="+repo+"] .files div[data-filename='"+file_name+"']").append(marked_div);
+  }
+  else {
+    $("li[data-repo="+repo+"] .files div[data-filename='"+file_name+"']").append(gist);
+  }
+  
 }
