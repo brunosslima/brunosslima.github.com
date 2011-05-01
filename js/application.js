@@ -5,7 +5,8 @@ register_gists = function (list) {
 
 $(function() {
   $.each(gist_list, function(index, gist) {
-    var element = $('<li/>');
+    var element = $('<div/>');
+    element.attr('class', 'gist-post');
     element.attr('data-repo', gist.repo);
     element.append($('<h2/>').html(gist.description));
     element.append($('<span/>').attr('style', 'display: block').html(gist.created_at));
@@ -58,7 +59,7 @@ insert_gist = function(gist) {
     contents = gist;
   }
   
-  $("li[data-repo="+repo+"] .files div[data-filename='"+file_name+"']").append(contents);
+  $("div[data-repo="+repo+"] .files div[data-filename='"+file_name+"']").append(contents);
 }
 
 extract_html_from = function(gist) {
@@ -72,7 +73,7 @@ extract_html_from = function(gist) {
   marked_down = converter.makeHtml(gist_text_string);
 
   var marked_div = $('<div/>');
-  marked_div.attr('class', 'converted-markdown');
+  marked_div.attr('class', 'wikistyle');
   marked_div.append(marked_down);
   return marked_div;
 }
