@@ -52,23 +52,27 @@ insert_gist = function(gist) {
   var file_name = file_link.attr('href').replace('https://gist.github.com/'+repo+'#file_', "");
   
   if(file_name.match(/\.md$/)) {
-    var lines = gist.find(".line");
-    var gist_text_string = "";
-    $.each(lines, function(index, line){
-      gist_text_string += line.innerText + "\n";
-    });
-  
-    var converter = new Showdown.converter();
-    marked_down = converter.makeHtml(gist_text_string);
-  
-    var marked_div = $('<div/>');
-    marked_div.attr('class', 'converted-markdown');
-    marked_div.append(marked_down);
-
-    $("li[data-repo="+repo+"] .files div[data-filename='"+file_name+"']").append(marked_div);
+    contents = extract_html_from(gist);
   }
   else {
-    $("li[data-repo="+repo+"] .files div[data-filename='"+file_name+"']").append(gist);
+    contents = gist;
   }
   
+  $("li[data-repo="+repo+"] .files div[data-filename='"+file_name+"']").append(contents);
+}
+
+extract_html_from = function(gist) {
+  var lines = gist.find(".line");
+  var gist_text_string = "";
+  $.each(lines, function(index, line){
+    gist_text_string += $(line).text() + "\n";
+  });
+
+  var converter = new Showdown.converter();
+  marked_down = converter.makeHtml(gist_text_string);
+
+  var marked_div = $('<div/>');
+  marked_div.attr('class', 'converted-markdown');
+  marked_div.append(marked_down);
+  return marked_div;
 }
