@@ -17,6 +17,7 @@ $(function() {
     $.each(gist.files, function(file_index, filename) {
       var file = $('<div/>');
       file.attr('data-filename', filename);
+      file.attr('class', 'file');
       var file_link = $('<a/>').attr('href', 'https://gist.github.com/' + gist.repo + '#file_' + filename).html(filename);
       file.append(file_link);
       schedule_gist_script(gist.repo, filename);
