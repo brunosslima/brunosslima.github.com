@@ -8,7 +8,7 @@ $(function() {
     var element = $('<div/>');
     element.attr('class', 'gist-post');
     element.attr('data-repo', gist.repo);
-    element.append($('<h2/>').html(gist.description));
+    element.append($('<h1/>').html(gist.description));
     element.append($('<span/>').attr('style', 'display: block').html(gist.created_at));
     element.append($('<span/>').html('Comentários: '+gist.comments.length));
     
