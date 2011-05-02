@@ -39,7 +39,6 @@ schedule_gist_script = function (repo, file) {
 activate_write_grabber = function() {
   document.write = function(script_text) {
     var content = $(script_text);
-
     if(content.find('div').length > 0) {
       insert_gist(content);
     }
@@ -50,7 +49,7 @@ insert_gist = function(gist) {
   var repo_link = gist.find('a:contains(This Gist)');
   var repo = repo_link.attr('href').replace("https://gist.github.com/", "");
   var file_link = gist.find('a[href^="https://gist.github.com/'+repo+'#"]');
-  var file_name = file_link.attr('href').replace('https://gist.github.com/'+repo+'#file_', "");
+  var file_name = file_link.text();
   
   if(file_name.match(/\.md$/)) {
     contents = extract_html_from(gist);
