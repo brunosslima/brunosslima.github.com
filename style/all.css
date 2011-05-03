@@ -1,5 +1,5 @@
-body {padding: 0; margin: 0 8%;}
-.top {background-color: #844; border-top-left-radius: 15px; padding: 15px 0; height: 200px; color: #fdc;}
+body {padding: 0; margin: 2em 8%;}
+.top {background-color: #844; border-top-left-radius: 35px; border-bottom-right-radius: 35px; padding: 15px 0; height: 200px; color: #fdc;}
 .top span {font-size: 5.6em; font-variant: small-caps; font-family: "Trebuchet MS", Georgia; padding: 0; margin: 0 35px;}
 .top p {padding: 0; margin: 0 35px; font-family: Georgia; font-weight: bold; padding-left: .2em;}
 .top hr {height: 8px; background-color: #fdc; margin-top: 20px; border-color: transparent; margin: 20px 0px 0px 35px;}
