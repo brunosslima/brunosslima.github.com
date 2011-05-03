@@ -4,9 +4,10 @@ body {padding: 0; margin: 2em 8%;}
 .top p {padding: 0; margin: 0 35px; font-family: Georgia; font-weight: bold; padding-left: .2em;}
 .top hr {height: 8px; background-color: #fdc; margin-top: 20px; border-color: transparent; margin: 20px 0px 0px 35px;}
 .top hr + hr {margin-top: 10px;}
-.files {padding-top: 7px; }
+.files > div {padding-top: .1em; }
 .files > div > a:link, .files >div > a:visited, .files div > a:active { color:#500;}
-.files > div > a {font: normal 1em Georgia; letter-spacing: .3ex; margin-right: 1em; line-height: 2em; padding: 3px 6px; background-color: #fdc; text-decoration: none;}
+.files > div > a {margin-left: .7em; font: normal 1em Georgia; letter-spacing: .3ex; line-height: 2em; padding: 3px 6px; background-color: #fdc; text-decoration: none;}
 div.gist-post > h1 {padding-top: 20px; margin-top: 25px; margin-bottom:10px;  border-top: 22px groove #fdc;}
-.file > .wikistyle {padding: .7em;}
-.file > .gist {margin: .7em;}
+.file > .wikistyle {padding: 0 .7em;}
+.file > .gist {margin: 0.1em 0.7em 0;}
+.file > .gist > .gist-file {margin-bottom: .7em;}
