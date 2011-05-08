@@ -1,33 +1,32 @@
-gist_list = [];
-registerGists = function (response) {
-  gist_list = response.data;
-};
-
-$(function() {
-  $.each(gist_list, function(index, gist) {
-    var element = $('<div/>');
-    element.attr('class', 'gist-post');
-    element.attr('data-repo', gist.id);
-    element.append($('<h1/>').html(gist.description));
-    element.append($('<span/>').attr('style', 'display: block').html(gist.created_at));
-    element.append($('<span/>').html('Comentários: '+gist.comments));
-    
-    var files_div = $('<div/>').attr('class', 'files');
-
-    $.each(gist.files, function(file_index, file_data) {
-      var file_div = $('<div/>');
-      file_div.attr('data-filename', file_data.filename);
-      file_div.attr('class', 'file');
-      var file_link = $('<a/>').attr('href', gist.html_url + '#file_' + encodeURIComponent(file_data.filename)).html(file_data.filename);
-      file_div.append(file_link);
-      schedule_gist_script(gist.id, file_data.filename);
-      files_div.append(file_div);
+$(function(){
+  username = "formigarafa";
+  gists_url = "https://api.github.com/users/"+username+"/gists";
+  $.getJSON(gists_url + "?callback=?", function(response, status_text){
+    $.each(response.data, function(index, gist) {
+      var element = $('<div/>');
+      element.attr('class', 'gist-post');
+      element.attr('data-repo', gist.id);
+      element.append($('<h1/>').html(gist.description));
+      element.append($('<span/>').attr('style', 'display: block').html(gist.created_at));
+      element.append($('<span/>').html('Comentários: '+gist.comments));
+      
+      var files_div = $('<div/>').attr('class', 'files');
+  
+      $.each(gist.files, function(file_index, file_data) {
+        var file_div = $('<div/>');
+        file_div.attr('data-filename', file_data.filename);
+        file_div.attr('class', 'file');
+        var file_link = $('<a/>').attr('href', gist.html_url + '#file_' + encodeURIComponent(file_data.filename)).html(file_data.filename);
+        file_div.append(file_link);
+        schedule_gist_script(gist.id, file_data.filename);
+        files_div.append(file_div);
+      });
+      
+      element.append(files_div);
+      $('.gists').append(element);
     });
-    
-    element.append(files_div);
-    $('.gists').append(element);
+    activate_write_grabber();
   });
-  activate_write_grabber();
 });
 
 schedule_gist_script = function (repo, file) {
