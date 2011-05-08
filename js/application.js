@@ -35,7 +35,7 @@ schedule_gist_script = function (repo, file) {
   script.type  = "text/javascript";
   script.src   = "https://gist.github.com/"+repo+".js?file="+encodeURIComponent(file);
   document.body.appendChild(script);
-}
+};
 
 activate_write_grabber = function() {
   document.write = function(script_text) {
@@ -43,8 +43,8 @@ activate_write_grabber = function() {
     if(content.find('div').length > 0) {
       insert_gist(content);
     }
-  } 
-}
+  };
+};
 
 insert_gist = function(gist) {
   var repo_link = gist.find('a:contains(This Gist)');
@@ -60,7 +60,7 @@ insert_gist = function(gist) {
   }
   
   $("div[data-repo="+repo+"] .files div[data-filename='"+file_name+"']").append(contents);
-}
+};
 
 extract_html_from = function(gist) {
   var lines = gist.find(".line");
@@ -76,4 +76,4 @@ extract_html_from = function(gist) {
   marked_div.attr('class', 'wikistyle');
   marked_div.append(marked_down);
   return marked_div;
-}
+};
