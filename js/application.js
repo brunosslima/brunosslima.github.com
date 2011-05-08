@@ -1,34 +1,34 @@
-gist_list = []
-register_gists = function (list) {
-  gist_list = list.gists;
-}
+gist_list = [];
+registerGists = function (response) {
+  gist_list = response.data;
+};
 
 $(function() {
   $.each(gist_list, function(index, gist) {
     var element = $('<div/>');
     element.attr('class', 'gist-post');
-    element.attr('data-repo', gist.repo);
+    element.attr('data-repo', gist.id);
     element.append($('<h1/>').html(gist.description));
     element.append($('<span/>').attr('style', 'display: block').html(gist.created_at));
-    element.append($('<span/>').html('Comentários: '+gist.comments.length));
+    element.append($('<span/>').html('Comentários: '+gist.comments));
     
-    var files = $('<div/>').attr('class', 'files');
+    var files_div = $('<div/>').attr('class', 'files');
 
-    $.each(gist.files, function(file_index, filename) {
-      var file = $('<div/>');
-      file.attr('data-filename', filename);
-      file.attr('class', 'file');
-      var file_link = $('<a/>').attr('href', 'https://gist.github.com/' + gist.repo + '#file_' + filename).html(filename);
-      file.append(file_link);
-      schedule_gist_script(gist.repo, filename);
-      files.append(file);
+    $.each(gist.files, function(file_index, file_data) {
+      var file_div = $('<div/>');
+      file_div.attr('data-filename', file_data.filename);
+      file_div.attr('class', 'file');
+      var file_link = $('<a/>').attr('href', gist.html_url + '#file_' + encodeURIComponent(file_data.filename)).html(file_data.filename);
+      file_div.append(file_link);
+      schedule_gist_script(gist.id, file_data.filename);
+      files_div.append(file_div);
     });
     
-    element.append(files);
+    element.append(files_div);
     $('.gists').append(element);
   });
   activate_write_grabber();
-})
+});
 
 schedule_gist_script = function (repo, file) {
   var script   = document.createElement("script");
