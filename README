@@ -1,1 +1,10 @@
-Não exatamente, mas um blog feito com js hospedado no github e persistido através de gists.
+#BloGist
+Client-side javascript blog (with a little of help from github)
+
+#Description:
+It work like an blog, but it read posts from gists on your github account.
+
+- works hosted on github
+- read from gists on github
+- any data management is done either on github servers or on visisting user web browser
+
