@@ -1,5 +1,5 @@
 $(function(){
-  username = "formigarafa";
+  username = "brunosslima";
   gists_url = "https://api.github.com/users/"+username+"/gists";
   $.getJSON(gists_url + "?callback=?", function(response, status_text){
     $.each(response.data, function(index, gist) {
